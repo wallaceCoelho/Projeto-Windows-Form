@@ -12,6 +12,61 @@ namespace Projeto_Windows_form
 {
     public partial class FmFornecedor : Form
     {
+        private bool ValidaCnpj(string cnpj)
+        {
+            bool resp = false;
+            int digito01 = 0, digito02 = 0;
+
+            digito01 += int.Parse(cnpj.Substring(10, 1)) * 2;
+            digito01 += int.Parse(cnpj.Substring(9, 1)) * 3;
+            digito01 += int.Parse(cnpj.Substring(8, 1)) * 4;
+            digito01 += int.Parse(cnpj.Substring(6, 1)) * 5;
+            digito01 += int.Parse(cnpj.Substring(5, 1)) * 6;
+            digito01 += int.Parse(cnpj.Substring(4, 1)) * 7;
+            digito01 += int.Parse(cnpj.Substring(2, 1)) * 8;
+            digito01 += int.Parse(cnpj.Substring(1, 1)) * 9;
+            digito01 += int.Parse(cnpj.Substring(0, 1)) * 10;
+
+            digito01 %= 11;
+
+            if (digito01 < 2)
+            {
+                digito01 = 0;
+            }
+            else
+            {
+                digito01 = 11 - digito01;
+            }
+
+            digito02 += int.Parse(cnpj.Substring(12, 1)) * 2;
+            digito02 += int.Parse(cnpj.Substring(10, 1)) * 3;
+            digito02 += int.Parse(cnpj.Substring(9, 1)) * 4;
+            digito02 += int.Parse(cnpj.Substring(8, 1)) * 5;
+            digito02 += int.Parse(cnpj.Substring(6, 1)) * 6;
+            digito02 += int.Parse(cnpj.Substring(5, 1)) * 7;
+            digito02 += int.Parse(cnpj.Substring(4, 1)) * 8;
+            digito02 += int.Parse(cnpj.Substring(2, 1)) * 9;
+            digito02 += int.Parse(cnpj.Substring(1, 1)) * 10;
+            digito02 += int.Parse(cnpj.Substring(0, 1)) * 11;
+
+
+            if (digito02 < 2)
+            {
+                digito02 = 0;
+            }
+            else
+            {
+                digito02 = 11 - digito02;
+            }
+
+            if (cnpj.Substring(12, 1) == digito01.ToString()
+                && cnpj.Substring(13, 1) == digito02.ToString())
+            {
+                resp = true;
+            }
+
+            return resp;
+        }
         private void Habilita()
         {
             cd_fornecedorTextBox.Enabled = false;
@@ -23,7 +78,7 @@ namespace Projeto_Windows_form
             sg_estadoTextBox.Enabled = true;
             cd_cepTextBox.Enabled = true;
             nr_telefoneTextBox.Enabled = true;
-            cd_cnpjTextBox.Enabled = true;
+            cd_cnpjMaskedTextBox.Enabled = true;
             cd_ieTextBox.Enabled = true;
             btnSalvar.Enabled = true;
             btnCancelar.Enabled = true;
@@ -48,7 +103,7 @@ namespace Projeto_Windows_form
             sg_estadoTextBox.Enabled = false;
             cd_cepTextBox.Enabled = false;
             nr_telefoneTextBox.Enabled = false;
-            cd_cnpjTextBox.Enabled = false;
+            cd_cnpjMaskedTextBox.Enabled = false;
             cd_ieTextBox.Enabled = false;
             btnSalvar.Enabled = false;
             btnCancelar.Enabled = false;
@@ -107,10 +162,18 @@ namespace Projeto_Windows_form
 
         private void btnSalvar_Click(object sender, EventArgs e)
         {
+            if (ValidaCnpj(cd_cnpjMaskedTextBox.Text))
+            {
             Validate();
             tbFornecedorBindingSource.EndEdit();
             tbFornecedorTableAdapter.Update(cadastroDataSet.tbFornecedor);
             Desabilita();
+            }
+            else
+            {
+                MessageBox.Show("CNPJ inválido !!!");
+                cd_cnpjMaskedTextBox.Focus();
+            }
         }
 
         private void btnCancelar_Click(object sender, EventArgs e)

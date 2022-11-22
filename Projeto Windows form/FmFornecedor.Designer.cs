@@ -38,8 +38,8 @@
             System.Windows.Forms.Label sg_estadoLabel;
             System.Windows.Forms.Label cd_cepLabel;
             System.Windows.Forms.Label nr_telefoneLabel;
-            System.Windows.Forms.Label cd_cnpjLabel;
             System.Windows.Forms.Label cd_ieLabel;
+            System.Windows.Forms.Label cd_cnpjLabel1;
             this.btnSair = new System.Windows.Forms.Button();
             this.btnImprimir = new System.Windows.Forms.Button();
             this.btnPesquisar = new System.Windows.Forms.Button();
@@ -62,8 +62,9 @@
             this.sg_estadoTextBox = new System.Windows.Forms.TextBox();
             this.cd_cepTextBox = new System.Windows.Forms.TextBox();
             this.nr_telefoneTextBox = new System.Windows.Forms.TextBox();
-            this.cd_cnpjTextBox = new System.Windows.Forms.TextBox();
             this.cd_ieTextBox = new System.Windows.Forms.TextBox();
+            this.tableAdapterManager = new Projeto_Windows_form.CadastroDataSetTableAdapters.TableAdapterManager();
+            this.cd_cnpjMaskedTextBox = new System.Windows.Forms.MaskedTextBox();
             cd_fornecedorLabel = new System.Windows.Forms.Label();
             nm_fornecedorLabel = new System.Windows.Forms.Label();
             ds_enderecoLabel = new System.Windows.Forms.Label();
@@ -73,8 +74,8 @@
             sg_estadoLabel = new System.Windows.Forms.Label();
             cd_cepLabel = new System.Windows.Forms.Label();
             nr_telefoneLabel = new System.Windows.Forms.Label();
-            cd_cnpjLabel = new System.Windows.Forms.Label();
             cd_ieLabel = new System.Windows.Forms.Label();
+            cd_cnpjLabel1 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.cadastroDataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tbFornecedorBindingSource)).BeginInit();
             this.SuspendLayout();
@@ -168,16 +169,6 @@
             nr_telefoneLabel.Size = new System.Drawing.Size(70, 18);
             nr_telefoneLabel.TabIndex = 67;
             nr_telefoneLabel.Text = "Telefone:";
-            // 
-            // cd_cnpjLabel
-            // 
-            cd_cnpjLabel.AutoSize = true;
-            cd_cnpjLabel.Font = new System.Drawing.Font("Arial", 12F);
-            cd_cnpjLabel.Location = new System.Drawing.Point(72, 236);
-            cd_cnpjLabel.Name = "cd_cnpjLabel";
-            cd_cnpjLabel.Size = new System.Drawing.Size(54, 18);
-            cd_cnpjLabel.TabIndex = 69;
-            cd_cnpjLabel.Text = "CNPJ:";
             // 
             // cd_ieLabel
             // 
@@ -410,16 +401,6 @@
             this.nr_telefoneTextBox.Size = new System.Drawing.Size(210, 26);
             this.nr_telefoneTextBox.TabIndex = 68;
             // 
-            // cd_cnpjTextBox
-            // 
-            this.cd_cnpjTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.tbFornecedorBindingSource, "cd_cnpj", true));
-            this.cd_cnpjTextBox.Font = new System.Drawing.Font("Arial", 12F);
-            this.cd_cnpjTextBox.Location = new System.Drawing.Point(152, 233);
-            this.cd_cnpjTextBox.MaxLength = 18;
-            this.cd_cnpjTextBox.Name = "cd_cnpjTextBox";
-            this.cd_cnpjTextBox.Size = new System.Drawing.Size(265, 26);
-            this.cd_cnpjTextBox.TabIndex = 70;
-            // 
             // cd_ieTextBox
             // 
             this.cd_ieTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.tbFornecedorBindingSource, "cd_ie", true));
@@ -430,11 +411,42 @@
             this.cd_ieTextBox.Size = new System.Drawing.Size(100, 26);
             this.cd_ieTextBox.TabIndex = 71;
             // 
+            // tableAdapterManager
+            // 
+            this.tableAdapterManager.BackupDataSetBeforeUpdate = false;
+            this.tableAdapterManager.tbClienteTableAdapter = null;
+            this.tableAdapterManager.tbFornecedorTableAdapter = this.tbFornecedorTableAdapter;
+            this.tableAdapterManager.tbProdutoTableAdapter = null;
+            this.tableAdapterManager.tbUsuarioTableAdapter = null;
+            this.tableAdapterManager.UpdateOrder = Projeto_Windows_form.CadastroDataSetTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
+            // 
+            // cd_cnpjLabel1
+            // 
+            cd_cnpjLabel1.AutoSize = true;
+            cd_cnpjLabel1.Font = new System.Drawing.Font("Arial", 12F);
+            cd_cnpjLabel1.Location = new System.Drawing.Point(72, 241);
+            cd_cnpjLabel1.Name = "cd_cnpjLabel1";
+            cd_cnpjLabel1.Size = new System.Drawing.Size(54, 18);
+            cd_cnpjLabel1.TabIndex = 71;
+            cd_cnpjLabel1.Text = "CNPJ:";
+            // 
+            // cd_cnpjMaskedTextBox
+            // 
+            this.cd_cnpjMaskedTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.tbFornecedorBindingSource, "cd_cnpj", true));
+            this.cd_cnpjMaskedTextBox.Font = new System.Drawing.Font("Arial", 12F);
+            this.cd_cnpjMaskedTextBox.Location = new System.Drawing.Point(152, 239);
+            this.cd_cnpjMaskedTextBox.Mask = "00,000,000/0000-00";
+            this.cd_cnpjMaskedTextBox.Name = "cd_cnpjMaskedTextBox";
+            this.cd_cnpjMaskedTextBox.Size = new System.Drawing.Size(177, 26);
+            this.cd_cnpjMaskedTextBox.TabIndex = 72;
+            // 
             // FmFornecedor
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(cd_cnpjLabel1);
+            this.Controls.Add(this.cd_cnpjMaskedTextBox);
             this.Controls.Add(cd_ieLabel);
             this.Controls.Add(this.cd_ieTextBox);
             this.Controls.Add(cd_fornecedorLabel);
@@ -455,8 +467,6 @@
             this.Controls.Add(this.cd_cepTextBox);
             this.Controls.Add(nr_telefoneLabel);
             this.Controls.Add(this.nr_telefoneTextBox);
-            this.Controls.Add(cd_cnpjLabel);
-            this.Controls.Add(this.cd_cnpjTextBox);
             this.Controls.Add(this.btnSair);
             this.Controls.Add(this.btnImprimir);
             this.Controls.Add(this.btnPesquisar);
@@ -502,7 +512,8 @@
         private System.Windows.Forms.TextBox sg_estadoTextBox;
         private System.Windows.Forms.TextBox cd_cepTextBox;
         private System.Windows.Forms.TextBox nr_telefoneTextBox;
-        private System.Windows.Forms.TextBox cd_cnpjTextBox;
         private System.Windows.Forms.TextBox cd_ieTextBox;
+        private CadastroDataSetTableAdapters.TableAdapterManager tableAdapterManager;
+        private System.Windows.Forms.MaskedTextBox cd_cnpjMaskedTextBox;
     }
 }

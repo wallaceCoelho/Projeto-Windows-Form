@@ -12,6 +12,62 @@ namespace Projeto_Windows_form
 {
     public partial class FmCliente : Form
     {
+        private bool ValidaCpf(string cpf)
+        {
+            bool resp = false;
+            int digito01 = 0 , digito02 = 0;
+
+            digito01 += int.Parse(cpf.Substring(10, 1)) * 2;
+            digito01 += int.Parse(cpf.Substring(9, 1)) * 3;
+            digito01 += int.Parse(cpf.Substring(8, 1)) * 4;
+            digito01 += int.Parse(cpf.Substring(6, 1)) * 5;
+            digito01 += int.Parse(cpf.Substring(5, 1)) * 6;
+            digito01 += int.Parse(cpf.Substring(4, 1)) * 7;
+            digito01 += int.Parse(cpf.Substring(2, 1)) * 8;
+            digito01 += int.Parse(cpf.Substring(1, 1)) * 9;
+            digito01 += int.Parse(cpf.Substring(0, 1)) * 10;
+
+            digito01 %= 11;
+
+            if (digito01 < 2)
+            {
+                digito01 = 0;
+            }
+            else
+            {
+                digito01 = 11 - digito01;
+            }
+
+            digito02 += int.Parse(cpf.Substring(12, 1)) * 2;
+            digito02 += int.Parse(cpf.Substring(10, 1)) * 3;
+            digito02 += int.Parse(cpf.Substring(9, 1)) * 4;
+            digito02 += int.Parse(cpf.Substring(8, 1)) * 5;
+            digito02 += int.Parse(cpf.Substring(6, 1)) * 6;
+            digito02 += int.Parse(cpf.Substring(5, 1)) * 7;
+            digito02 += int.Parse(cpf.Substring(4, 1)) * 8;
+            digito02 += int.Parse(cpf.Substring(2, 1)) * 9;
+            digito02 += int.Parse(cpf.Substring(1, 1)) * 10;
+            digito02 += int.Parse(cpf.Substring(0, 1)) * 11;
+
+
+            if (digito02 < 2)
+            {
+                digito02 = 0;
+            }
+            else
+            {
+                digito02 = 11 - digito02;
+            }
+
+            if (cpf.Substring(12, 1) == digito01.ToString() 
+                && cpf.Substring(13, 1) == digito02.ToString())
+            {
+                resp = true;
+            }
+
+            return resp;
+        }
+
         private void Habilita()
         {
             cd_clienteTextBox.Enabled = false;
@@ -21,9 +77,9 @@ namespace Projeto_Windows_form
             nm_bairroTextBox.Enabled = true;
             nm_cidadeTextBox.Enabled = true;
             sg_estadoTextBox.Enabled = true;
-            cd_cepTextBox.Enabled = true;
+            cd_cepMaskedTextBox.Enabled = true;
             nr_telefoneTextBox.Enabled = true;
-            cd_cpfTextBox.Enabled = true;
+            cd_cpfMaskedTextBox.Enabled = true;
             cd_rgTextBox.Enabled = true;
             btnSalvar.Enabled = true;
             btnCancelar.Enabled = true;
@@ -46,9 +102,9 @@ namespace Projeto_Windows_form
             nm_bairroTextBox.Enabled = false;
             nm_cidadeTextBox.Enabled = false;
             sg_estadoTextBox.Enabled = false;
-            cd_cepTextBox.Enabled = false;
+            cd_cepMaskedTextBox.Enabled = false;
             nr_telefoneTextBox.Enabled = false;
-            cd_cpfTextBox.Enabled = false;
+            cd_cpfMaskedTextBox.Enabled = false;
             cd_rgTextBox.Enabled = false;
             btnSalvar.Enabled = false;
             btnCancelar.Enabled = false;
@@ -108,10 +164,19 @@ namespace Projeto_Windows_form
 
         private void btnSalvar_Click(object sender, EventArgs e)
         {
-            Validate();
-            tbClienteBindingSource.EndEdit();
-            tbClienteTableAdapter.Update(cadastroDataSet.tbCliente);
-            Desabilita();
+            if (ValidaCpf(cd_cpfMaskedTextBox.Text))
+            {
+                Validate();
+                tbClienteBindingSource.EndEdit();
+                tbClienteTableAdapter.Update(cadastroDataSet.tbCliente);
+                Desabilita();
+            } 
+            else
+            {
+                MessageBox.Show("CPF inválido !!!");
+                cd_cpfMaskedTextBox.Focus();
+            }
+
         }
 
         private void btnCancelar_Click(object sender, EventArgs e)
@@ -123,6 +188,21 @@ namespace Projeto_Windows_form
         private void btnSair_Click(object sender, EventArgs e)
         {
             Close();
+        }
+
+        private void btnPesquisar_Click(object sender, EventArgs e)
+        {
+            int codigo, reg;
+
+            FmPesquisaCliente fpc = new FmPesquisaCliente();
+            fpc.ShowDialog();
+            codigo = fpc.GetCodigo();
+
+            if (codigo > 0)
+            {
+                reg = tbClienteBindingSource.Find("cd_cliente", codigo);
+                tbClienteBindingSource.Position = reg;
+            }
         }
     }
 }

@@ -111,5 +111,21 @@ namespace Projeto_Windows_form
         {
             Close();
         }
+
+        private void btnPesquisar_Click(object sender, EventArgs e)
+        {
+            int codigo, reg;
+
+            FmPesquisaUsuario fpu = new FmPesquisaUsuario();
+            fpu.ShowDialog();
+            codigo = fpu.GetCodigo();
+
+            if (codigo > 0)
+            {
+                reg = tbUsuarioBindingSource.Find("cd_usuario", codigo);
+                tbUsuarioBindingSource.Position = reg;
+            }
+
+        }
     }
 }

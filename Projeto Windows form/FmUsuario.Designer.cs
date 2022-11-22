@@ -128,45 +128,50 @@
             // cd_usuarioTextBox
             // 
             this.cd_usuarioTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.tbUsuarioBindingSource, "cd_usuario", true));
+            this.cd_usuarioTextBox.Font = new System.Drawing.Font("Arial", 12F);
             this.cd_usuarioTextBox.Location = new System.Drawing.Point(152, 94);
             this.cd_usuarioTextBox.Name = "cd_usuarioTextBox";
-            this.cd_usuarioTextBox.Size = new System.Drawing.Size(41, 20);
+            this.cd_usuarioTextBox.Size = new System.Drawing.Size(41, 26);
             this.cd_usuarioTextBox.TabIndex = 2;
             // 
             // nm_usuarioTextBox
             // 
             this.nm_usuarioTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.tbUsuarioBindingSource, "nm_usuario", true));
+            this.nm_usuarioTextBox.Font = new System.Drawing.Font("Arial", 12F);
             this.nm_usuarioTextBox.Location = new System.Drawing.Point(152, 129);
             this.nm_usuarioTextBox.MaxLength = 100;
             this.nm_usuarioTextBox.Name = "nm_usuarioTextBox";
-            this.nm_usuarioTextBox.Size = new System.Drawing.Size(334, 20);
+            this.nm_usuarioTextBox.Size = new System.Drawing.Size(334, 26);
             this.nm_usuarioTextBox.TabIndex = 4;
             // 
             // sg_nivelTextBox
             // 
             this.sg_nivelTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.tbUsuarioBindingSource, "sg_nivel", true));
+            this.sg_nivelTextBox.Font = new System.Drawing.Font("Arial", 12F);
             this.sg_nivelTextBox.Location = new System.Drawing.Point(152, 163);
             this.sg_nivelTextBox.MaxLength = 1;
             this.sg_nivelTextBox.Name = "sg_nivelTextBox";
-            this.sg_nivelTextBox.Size = new System.Drawing.Size(24, 20);
+            this.sg_nivelTextBox.Size = new System.Drawing.Size(24, 26);
             this.sg_nivelTextBox.TabIndex = 6;
             // 
             // nm_loginTextBox
             // 
             this.nm_loginTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.tbUsuarioBindingSource, "nm_login", true));
+            this.nm_loginTextBox.Font = new System.Drawing.Font("Arial", 12F);
             this.nm_loginTextBox.Location = new System.Drawing.Point(152, 197);
             this.nm_loginTextBox.MaxLength = 15;
             this.nm_loginTextBox.Name = "nm_loginTextBox";
-            this.nm_loginTextBox.Size = new System.Drawing.Size(154, 20);
+            this.nm_loginTextBox.Size = new System.Drawing.Size(154, 26);
             this.nm_loginTextBox.TabIndex = 8;
             // 
             // cd_senhaTextBox
             // 
             this.cd_senhaTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.tbUsuarioBindingSource, "cd_senha", true));
+            this.cd_senhaTextBox.Font = new System.Drawing.Font("Arial", 12F);
             this.cd_senhaTextBox.Location = new System.Drawing.Point(152, 231);
             this.cd_senhaTextBox.MaxLength = 15;
             this.cd_senhaTextBox.Name = "cd_senhaTextBox";
-            this.cd_senhaTextBox.Size = new System.Drawing.Size(154, 20);
+            this.cd_senhaTextBox.Size = new System.Drawing.Size(154, 26);
             this.cd_senhaTextBox.TabIndex = 10;
             this.cd_senhaTextBox.UseSystemPasswordChar = true;
             // 
@@ -264,6 +269,7 @@
             this.btnPesquisar.TabIndex = 18;
             this.btnPesquisar.Text = "Pesquisar";
             this.btnPesquisar.UseVisualStyleBackColor = true;
+            this.btnPesquisar.Click += new System.EventHandler(this.btnPesquisar_Click);
             // 
             // btnImprimir
             // 
@@ -293,6 +299,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ControlBox = false;
             this.Controls.Add(this.btnSair);
             this.Controls.Add(this.btnImprimir);
             this.Controls.Add(this.btnPesquisar);

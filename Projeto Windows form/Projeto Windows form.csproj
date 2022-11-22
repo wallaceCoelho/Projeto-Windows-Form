@@ -76,6 +76,18 @@
     <Compile Include="FmCliente.Designer.cs">
       <DependentUpon>FmCliente.cs</DependentUpon>
     </Compile>
+    <Compile Include="FmPesquisaCliente.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FmPesquisaCliente.Designer.cs">
+      <DependentUpon>FmPesquisaCliente.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FmPesquisaUsuario.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FmPesquisaUsuario.Designer.cs">
+      <DependentUpon>FmPesquisaUsuario.cs</DependentUpon>
+    </Compile>
     <Compile Include="FmPrincipal.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -104,6 +116,12 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="FmCliente.resx">
       <DependentUpon>FmCliente.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FmPesquisaCliente.resx">
+      <DependentUpon>FmPesquisaCliente.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FmPesquisaUsuario.resx">
+      <DependentUpon>FmPesquisaUsuario.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="fmprincipal.resx">
       <DependentUpon>FmPrincipal.cs</DependentUpon>
