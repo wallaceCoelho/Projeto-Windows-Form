@@ -174,7 +174,7 @@
             // 
             CEP.AutoSize = true;
             CEP.Font = new System.Drawing.Font("Arial", 12F);
-            CEP.Location = new System.Drawing.Point(70, 190);
+            CEP.Location = new System.Drawing.Point(70, 193);
             CEP.Name = "CEP";
             CEP.Size = new System.Drawing.Size(46, 18);
             CEP.TabIndex = 46;
@@ -417,7 +417,7 @@
             // 
             this.cd_cepMaskedTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.tbClienteBindingSource, "cd_cep", true));
             this.cd_cepMaskedTextBox.Font = new System.Drawing.Font("Arial", 12F);
-            this.cd_cepMaskedTextBox.Location = new System.Drawing.Point(157, 187);
+            this.cd_cepMaskedTextBox.Location = new System.Drawing.Point(157, 190);
             this.cd_cepMaskedTextBox.Mask = "00000-000";
             this.cd_cepMaskedTextBox.Name = "cd_cepMaskedTextBox";
             this.cd_cepMaskedTextBox.Size = new System.Drawing.Size(139, 26);

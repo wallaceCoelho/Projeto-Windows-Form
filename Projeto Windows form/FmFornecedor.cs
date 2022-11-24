@@ -186,5 +186,20 @@ namespace Projeto_Windows_form
         {
             Close();
         }
+
+        private void btnPesquisar_Click(object sender, EventArgs e)
+        {
+            int codigo, reg;
+
+            FmPesquisaFornecedor fpf = new FmPesquisaFornecedor();
+            fpf.ShowDialog();
+            codigo = fpf.GetCodigo();
+
+            if (codigo > 0)
+            {
+                reg = tbFornecedorBindingSource.Find("cd_fornecedor", codigo);
+                tbFornecedorBindingSource.Position = reg;
+            }
+        }
     }
 }

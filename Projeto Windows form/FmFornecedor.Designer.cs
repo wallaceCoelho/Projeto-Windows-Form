@@ -180,6 +180,16 @@
             cd_ieLabel.TabIndex = 70;
             cd_ieLabel.Text = "Cd IE:";
             // 
+            // cd_cnpjLabel1
+            // 
+            cd_cnpjLabel1.AutoSize = true;
+            cd_cnpjLabel1.Font = new System.Drawing.Font("Arial", 12F);
+            cd_cnpjLabel1.Location = new System.Drawing.Point(72, 241);
+            cd_cnpjLabel1.Name = "cd_cnpjLabel1";
+            cd_cnpjLabel1.Size = new System.Drawing.Size(54, 18);
+            cd_cnpjLabel1.TabIndex = 71;
+            cd_cnpjLabel1.Text = "CNPJ:";
+            // 
             // btnSair
             // 
             this.btnSair.AutoSize = true;
@@ -213,6 +223,7 @@
             this.btnPesquisar.TabIndex = 48;
             this.btnPesquisar.Text = "Pesquisar";
             this.btnPesquisar.UseVisualStyleBackColor = true;
+            this.btnPesquisar.Click += new System.EventHandler(this.btnPesquisar_Click);
             // 
             // btnCancelar
             // 
@@ -419,16 +430,6 @@
             this.tableAdapterManager.tbProdutoTableAdapter = null;
             this.tableAdapterManager.tbUsuarioTableAdapter = null;
             this.tableAdapterManager.UpdateOrder = Projeto_Windows_form.CadastroDataSetTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
-            // 
-            // cd_cnpjLabel1
-            // 
-            cd_cnpjLabel1.AutoSize = true;
-            cd_cnpjLabel1.Font = new System.Drawing.Font("Arial", 12F);
-            cd_cnpjLabel1.Location = new System.Drawing.Point(72, 241);
-            cd_cnpjLabel1.Name = "cd_cnpjLabel1";
-            cd_cnpjLabel1.Size = new System.Drawing.Size(54, 18);
-            cd_cnpjLabel1.TabIndex = 71;
-            cd_cnpjLabel1.Text = "CNPJ:";
             // 
             // cd_cnpjMaskedTextBox
             // 

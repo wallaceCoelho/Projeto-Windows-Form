@@ -49,6 +49,7 @@ namespace Projeto_Windows_form
             digito02 += int.Parse(cpf.Substring(1, 1)) * 10;
             digito02 += int.Parse(cpf.Substring(0, 1)) * 11;
 
+            digito02 %= 11;
 
             if (digito02 < 2)
             {

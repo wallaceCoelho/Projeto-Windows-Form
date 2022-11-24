@@ -49,6 +49,24 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Microsoft.ReportViewer.Common, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.150.1537.0\lib\net40\Microsoft.ReportViewer.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.DataVisualization, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.150.1537.0\lib\net40\Microsoft.ReportViewer.DataVisualization.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.Design, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.150.1537.0\lib\net40\Microsoft.ReportViewer.Design.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.ProcessingObjectModel, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.150.1537.0\lib\net40\Microsoft.ReportViewer.ProcessingObjectModel.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.WinForms, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.150.1537.0\lib\net40\Microsoft.ReportViewer.WinForms.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.SqlServer.Types, Version=14.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.SqlServer.Types.14.0.314.76\lib\net40\Microsoft.SqlServer.Types.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -82,6 +100,18 @@
     <Compile Include="FmPesquisaCliente.Designer.cs">
       <DependentUpon>FmPesquisaCliente.cs</DependentUpon>
     </Compile>
+    <Compile Include="FmPesquisaFornecedor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FmPesquisaFornecedor.Designer.cs">
+      <DependentUpon>FmPesquisaFornecedor.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FmPesquisaProduto.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FmPesquisaProduto.Designer.cs">
+      <DependentUpon>FmPesquisaProduto.cs</DependentUpon>
+    </Compile>
     <Compile Include="FmPesquisaUsuario.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -93,6 +123,12 @@
     </Compile>
     <Compile Include="FmPrincipal.Designer.cs">
       <DependentUpon>FmPrincipal.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FmRelatorioUsuario.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FmRelatorioUsuario.Designer.cs">
+      <DependentUpon>FmRelatorioUsuario.cs</DependentUpon>
     </Compile>
     <Compile Include="FmUsuario.cs">
       <SubType>Form</SubType>
@@ -114,11 +150,18 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SqlServerTypes\Loader.cs" />
     <EmbeddedResource Include="FmCliente.resx">
       <DependentUpon>FmCliente.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FmPesquisaCliente.resx">
       <DependentUpon>FmPesquisaCliente.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FmPesquisaFornecedor.resx">
+      <DependentUpon>FmPesquisaFornecedor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FmPesquisaProduto.resx">
+      <DependentUpon>FmPesquisaProduto.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FmPesquisaUsuario.resx">
       <DependentUpon>FmPesquisaUsuario.cs</DependentUpon>
@@ -128,6 +171,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FmProduto.resx">
       <DependentUpon>FmProduto.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FmRelatorioUsuario.resx">
+      <DependentUpon>FmRelatorioUsuario.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FmUsuario.resx">
       <DependentUpon>FmUsuario.cs</DependentUpon>
@@ -145,6 +191,7 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="RelatorioUsuario.rdlc" />
     <None Include="CadastroDataSet.xsc">
       <DependentUpon>CadastroDataSet.xsd</DependentUpon>
     </None>
@@ -156,6 +203,7 @@
     <None Include="CadastroDataSet.xss">
       <DependentUpon>CadastroDataSet.xsd</DependentUpon>
     </None>
+    <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -176,6 +224,19 @@
     <Content Include="Cadastro_log.ldf">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       <DependentUpon>Cadastro.mdf</DependentUpon>
+    </Content>
+    <Content Include="SqlServerTypes\readme.htm" />
+    <Content Include="SqlServerTypes\x64\msvcr120.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SqlServerTypes\x64\SqlServerSpatial140.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SqlServerTypes\x86\msvcr120.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SqlServerTypes\x86\SqlServerSpatial140.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
   <ItemGroup>

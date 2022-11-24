@@ -111,5 +111,20 @@ namespace Projeto_Windows_form
         {
             Close();
         }
+
+        private void btnPesquisar_Click(object sender, EventArgs e)
+        {
+            int codigo, reg;
+
+            FmPesquisaProduto fpp = new FmPesquisaProduto();
+            fpp.ShowDialog();
+            codigo = fpp.GetCodigo();
+
+            if (codigo > 0)
+            {
+                reg = tbProdutoBindingSource.Find("cd_produto", codigo);
+                tbProdutoBindingSource.Position = reg;
+            }
+        }
     }
 }

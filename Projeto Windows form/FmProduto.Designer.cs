@@ -48,14 +48,14 @@
             this.btnProximo = new System.Windows.Forms.Button();
             this.btnAnterior = new System.Windows.Forms.Button();
             this.cd_produtoTextBox = new System.Windows.Forms.TextBox();
+            this.tbProdutoBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.cadastroDataSet = new Projeto_Windows_form.CadastroDataSet();
             this.nm_produtoTextBox = new System.Windows.Forms.TextBox();
             this.sg_unidadeTextBox = new System.Windows.Forms.TextBox();
             this.vl_custoTextBox = new System.Windows.Forms.TextBox();
             this.vl_vendaTextBox = new System.Windows.Forms.TextBox();
             this.qt_estoqueTextBox = new System.Windows.Forms.TextBox();
             this.cd_fornecedorTextBox = new System.Windows.Forms.TextBox();
-            this.tbProdutoBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.cadastroDataSet = new Projeto_Windows_form.CadastroDataSet();
             this.tbProdutoTableAdapter = new Projeto_Windows_form.CadastroDataSetTableAdapters.tbProdutoTableAdapter();
             this.tableAdapterManager = new Projeto_Windows_form.CadastroDataSetTableAdapters.TableAdapterManager();
             cd_produtoLabel = new System.Windows.Forms.Label();
@@ -69,6 +69,77 @@
             ((System.ComponentModel.ISupportInitialize)(this.tbProdutoBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cadastroDataSet)).BeginInit();
             this.SuspendLayout();
+            // 
+            // cd_produtoLabel
+            // 
+            cd_produtoLabel.AutoSize = true;
+            cd_produtoLabel.Location = new System.Drawing.Point(68, 44);
+            cd_produtoLabel.Name = "cd_produtoLabel";
+            cd_produtoLabel.Size = new System.Drawing.Size(64, 18);
+            cd_produtoLabel.TabIndex = 40;
+            cd_produtoLabel.Text = "Código:";
+            // 
+            // nm_produtoLabel
+            // 
+            nm_produtoLabel.AutoSize = true;
+            nm_produtoLabel.Location = new System.Drawing.Point(68, 86);
+            nm_produtoLabel.Name = "nm_produtoLabel";
+            nm_produtoLabel.Size = new System.Drawing.Size(54, 18);
+            nm_produtoLabel.TabIndex = 42;
+            nm_produtoLabel.Text = "Nome:";
+            // 
+            // sg_unidadeLabel
+            // 
+            sg_unidadeLabel.AutoSize = true;
+            sg_unidadeLabel.Location = new System.Drawing.Point(68, 127);
+            sg_unidadeLabel.Name = "sg_unidadeLabel";
+            sg_unidadeLabel.Size = new System.Drawing.Size(79, 18);
+            sg_unidadeLabel.TabIndex = 44;
+            sg_unidadeLabel.Text = "Unidades:";
+            // 
+            // vl_custoLabel
+            // 
+            vl_custoLabel.AutoSize = true;
+            vl_custoLabel.Location = new System.Drawing.Point(68, 167);
+            vl_custoLabel.Name = "vl_custoLabel";
+            vl_custoLabel.Size = new System.Drawing.Size(117, 18);
+            vl_custoLabel.TabIndex = 46;
+            vl_custoLabel.Text = "Preço de custo:";
+            // 
+            // vl_vendaLabel
+            // 
+            vl_vendaLabel.AutoSize = true;
+            vl_vendaLabel.Location = new System.Drawing.Point(68, 209);
+            vl_vendaLabel.Name = "vl_vendaLabel";
+            vl_vendaLabel.Size = new System.Drawing.Size(118, 18);
+            vl_vendaLabel.TabIndex = 48;
+            vl_vendaLabel.Text = "Preço de venda";
+            // 
+            // qt_estoqueLabel
+            // 
+            qt_estoqueLabel.AutoSize = true;
+            qt_estoqueLabel.Location = new System.Drawing.Point(68, 252);
+            qt_estoqueLabel.Name = "qt_estoqueLabel";
+            qt_estoqueLabel.Size = new System.Drawing.Size(119, 18);
+            qt_estoqueLabel.TabIndex = 50;
+            qt_estoqueLabel.Text = "Quant. Estoque:";
+            // 
+            // cd_fornecedorLabel
+            // 
+            cd_fornecedorLabel.AutoSize = true;
+            cd_fornecedorLabel.Location = new System.Drawing.Point(16, 246);
+            cd_fornecedorLabel.Name = "cd_fornecedorLabel";
+            cd_fornecedorLabel.Size = new System.Drawing.Size(0, 18);
+            cd_fornecedorLabel.TabIndex = 52;
+            // 
+            // cd_fornecedorLabel1
+            // 
+            cd_fornecedorLabel1.AutoSize = true;
+            cd_fornecedorLabel1.Location = new System.Drawing.Point(68, 293);
+            cd_fornecedorLabel1.Name = "cd_fornecedorLabel1";
+            cd_fornecedorLabel1.Size = new System.Drawing.Size(131, 18);
+            cd_fornecedorLabel1.TabIndex = 52;
+            cd_fornecedorLabel1.Text = "Cód. Fornecedor:";
             // 
             // btnSair
             // 
@@ -103,6 +174,7 @@
             this.btnPesquisar.TabIndex = 38;
             this.btnPesquisar.Text = "Pesquisar";
             this.btnPesquisar.UseVisualStyleBackColor = true;
+            this.btnPesquisar.Click += new System.EventHandler(this.btnPesquisar_Click);
             // 
             // btnCancelar
             // 
@@ -188,15 +260,6 @@
             this.btnAnterior.UseVisualStyleBackColor = true;
             this.btnAnterior.Click += new System.EventHandler(this.btnAnterior_Click);
             // 
-            // cd_produtoLabel
-            // 
-            cd_produtoLabel.AutoSize = true;
-            cd_produtoLabel.Location = new System.Drawing.Point(68, 44);
-            cd_produtoLabel.Name = "cd_produtoLabel";
-            cd_produtoLabel.Size = new System.Drawing.Size(64, 18);
-            cd_produtoLabel.TabIndex = 40;
-            cd_produtoLabel.Text = "Código:";
-            // 
             // cd_produtoTextBox
             // 
             this.cd_produtoTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.tbProdutoBindingSource, "cd_produto", true));
@@ -204,118 +267,6 @@
             this.cd_produtoTextBox.Name = "cd_produtoTextBox";
             this.cd_produtoTextBox.Size = new System.Drawing.Size(40, 26);
             this.cd_produtoTextBox.TabIndex = 41;
-            // 
-            // nm_produtoLabel
-            // 
-            nm_produtoLabel.AutoSize = true;
-            nm_produtoLabel.Location = new System.Drawing.Point(68, 86);
-            nm_produtoLabel.Name = "nm_produtoLabel";
-            nm_produtoLabel.Size = new System.Drawing.Size(54, 18);
-            nm_produtoLabel.TabIndex = 42;
-            nm_produtoLabel.Text = "Nome:";
-            // 
-            // nm_produtoTextBox
-            // 
-            this.nm_produtoTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.tbProdutoBindingSource, "nm_produto", true));
-            this.nm_produtoTextBox.Location = new System.Drawing.Point(201, 83);
-            this.nm_produtoTextBox.MaxLength = 50;
-            this.nm_produtoTextBox.Name = "nm_produtoTextBox";
-            this.nm_produtoTextBox.Size = new System.Drawing.Size(524, 26);
-            this.nm_produtoTextBox.TabIndex = 43;
-            // 
-            // sg_unidadeLabel
-            // 
-            sg_unidadeLabel.AutoSize = true;
-            sg_unidadeLabel.Location = new System.Drawing.Point(68, 127);
-            sg_unidadeLabel.Name = "sg_unidadeLabel";
-            sg_unidadeLabel.Size = new System.Drawing.Size(79, 18);
-            sg_unidadeLabel.TabIndex = 44;
-            sg_unidadeLabel.Text = "Unidades:";
-            // 
-            // sg_unidadeTextBox
-            // 
-            this.sg_unidadeTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.tbProdutoBindingSource, "sg_unidade", true));
-            this.sg_unidadeTextBox.Location = new System.Drawing.Point(201, 124);
-            this.sg_unidadeTextBox.MaxLength = 2;
-            this.sg_unidadeTextBox.Name = "sg_unidadeTextBox";
-            this.sg_unidadeTextBox.Size = new System.Drawing.Size(81, 26);
-            this.sg_unidadeTextBox.TabIndex = 45;
-            // 
-            // vl_custoLabel
-            // 
-            vl_custoLabel.AutoSize = true;
-            vl_custoLabel.Location = new System.Drawing.Point(68, 167);
-            vl_custoLabel.Name = "vl_custoLabel";
-            vl_custoLabel.Size = new System.Drawing.Size(117, 18);
-            vl_custoLabel.TabIndex = 46;
-            vl_custoLabel.Text = "Preço de custo:";
-            // 
-            // vl_custoTextBox
-            // 
-            this.vl_custoTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.tbProdutoBindingSource, "vl_custo", true));
-            this.vl_custoTextBox.Location = new System.Drawing.Point(201, 164);
-            this.vl_custoTextBox.Name = "vl_custoTextBox";
-            this.vl_custoTextBox.Size = new System.Drawing.Size(165, 26);
-            this.vl_custoTextBox.TabIndex = 47;
-            // 
-            // vl_vendaLabel
-            // 
-            vl_vendaLabel.AutoSize = true;
-            vl_vendaLabel.Location = new System.Drawing.Point(68, 209);
-            vl_vendaLabel.Name = "vl_vendaLabel";
-            vl_vendaLabel.Size = new System.Drawing.Size(118, 18);
-            vl_vendaLabel.TabIndex = 48;
-            vl_vendaLabel.Text = "Preço de venda";
-            // 
-            // vl_vendaTextBox
-            // 
-            this.vl_vendaTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.tbProdutoBindingSource, "vl_venda", true));
-            this.vl_vendaTextBox.Location = new System.Drawing.Point(201, 206);
-            this.vl_vendaTextBox.Name = "vl_vendaTextBox";
-            this.vl_vendaTextBox.Size = new System.Drawing.Size(165, 26);
-            this.vl_vendaTextBox.TabIndex = 49;
-            // 
-            // qt_estoqueLabel
-            // 
-            qt_estoqueLabel.AutoSize = true;
-            qt_estoqueLabel.Location = new System.Drawing.Point(68, 252);
-            qt_estoqueLabel.Name = "qt_estoqueLabel";
-            qt_estoqueLabel.Size = new System.Drawing.Size(119, 18);
-            qt_estoqueLabel.TabIndex = 50;
-            qt_estoqueLabel.Text = "Quant. Estoque:";
-            // 
-            // qt_estoqueTextBox
-            // 
-            this.qt_estoqueTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.tbProdutoBindingSource, "qt_estoque", true));
-            this.qt_estoqueTextBox.Location = new System.Drawing.Point(201, 249);
-            this.qt_estoqueTextBox.Name = "qt_estoqueTextBox";
-            this.qt_estoqueTextBox.Size = new System.Drawing.Size(165, 26);
-            this.qt_estoqueTextBox.TabIndex = 51;
-            // 
-            // cd_fornecedorLabel
-            // 
-            cd_fornecedorLabel.AutoSize = true;
-            cd_fornecedorLabel.Location = new System.Drawing.Point(16, 246);
-            cd_fornecedorLabel.Name = "cd_fornecedorLabel";
-            cd_fornecedorLabel.Size = new System.Drawing.Size(0, 18);
-            cd_fornecedorLabel.TabIndex = 52;
-            // 
-            // cd_fornecedorLabel1
-            // 
-            cd_fornecedorLabel1.AutoSize = true;
-            cd_fornecedorLabel1.Location = new System.Drawing.Point(68, 293);
-            cd_fornecedorLabel1.Name = "cd_fornecedorLabel1";
-            cd_fornecedorLabel1.Size = new System.Drawing.Size(131, 18);
-            cd_fornecedorLabel1.TabIndex = 52;
-            cd_fornecedorLabel1.Text = "Cód. Fornecedor:";
-            // 
-            // cd_fornecedorTextBox
-            // 
-            this.cd_fornecedorTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.tbProdutoBindingSource, "cd_fornecedor", true));
-            this.cd_fornecedorTextBox.Location = new System.Drawing.Point(201, 290);
-            this.cd_fornecedorTextBox.Name = "cd_fornecedorTextBox";
-            this.cd_fornecedorTextBox.Size = new System.Drawing.Size(81, 26);
-            this.cd_fornecedorTextBox.TabIndex = 53;
             // 
             // tbProdutoBindingSource
             // 
@@ -326,6 +277,56 @@
             // 
             this.cadastroDataSet.DataSetName = "CadastroDataSet";
             this.cadastroDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // nm_produtoTextBox
+            // 
+            this.nm_produtoTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.tbProdutoBindingSource, "nm_produto", true));
+            this.nm_produtoTextBox.Location = new System.Drawing.Point(201, 83);
+            this.nm_produtoTextBox.MaxLength = 50;
+            this.nm_produtoTextBox.Name = "nm_produtoTextBox";
+            this.nm_produtoTextBox.Size = new System.Drawing.Size(524, 26);
+            this.nm_produtoTextBox.TabIndex = 43;
+            // 
+            // sg_unidadeTextBox
+            // 
+            this.sg_unidadeTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.tbProdutoBindingSource, "sg_unidade", true));
+            this.sg_unidadeTextBox.Location = new System.Drawing.Point(201, 124);
+            this.sg_unidadeTextBox.MaxLength = 2;
+            this.sg_unidadeTextBox.Name = "sg_unidadeTextBox";
+            this.sg_unidadeTextBox.Size = new System.Drawing.Size(81, 26);
+            this.sg_unidadeTextBox.TabIndex = 45;
+            // 
+            // vl_custoTextBox
+            // 
+            this.vl_custoTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.tbProdutoBindingSource, "vl_custo", true));
+            this.vl_custoTextBox.Location = new System.Drawing.Point(201, 164);
+            this.vl_custoTextBox.Name = "vl_custoTextBox";
+            this.vl_custoTextBox.Size = new System.Drawing.Size(165, 26);
+            this.vl_custoTextBox.TabIndex = 47;
+            // 
+            // vl_vendaTextBox
+            // 
+            this.vl_vendaTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.tbProdutoBindingSource, "vl_venda", true));
+            this.vl_vendaTextBox.Location = new System.Drawing.Point(201, 206);
+            this.vl_vendaTextBox.Name = "vl_vendaTextBox";
+            this.vl_vendaTextBox.Size = new System.Drawing.Size(165, 26);
+            this.vl_vendaTextBox.TabIndex = 49;
+            // 
+            // qt_estoqueTextBox
+            // 
+            this.qt_estoqueTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.tbProdutoBindingSource, "qt_estoque", true));
+            this.qt_estoqueTextBox.Location = new System.Drawing.Point(201, 249);
+            this.qt_estoqueTextBox.Name = "qt_estoqueTextBox";
+            this.qt_estoqueTextBox.Size = new System.Drawing.Size(165, 26);
+            this.qt_estoqueTextBox.TabIndex = 51;
+            // 
+            // cd_fornecedorTextBox
+            // 
+            this.cd_fornecedorTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.tbProdutoBindingSource, "cd_fornecedor", true));
+            this.cd_fornecedorTextBox.Location = new System.Drawing.Point(201, 290);
+            this.cd_fornecedorTextBox.Name = "cd_fornecedorTextBox";
+            this.cd_fornecedorTextBox.Size = new System.Drawing.Size(81, 26);
+            this.cd_fornecedorTextBox.TabIndex = 53;
             // 
             // tbProdutoTableAdapter
             // 
@@ -371,7 +372,7 @@
             this.Controls.Add(this.btnProximo);
             this.Controls.Add(this.btnAnterior);
             this.Font = new System.Drawing.Font("Arial", 12F);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "FmProduto";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Produtos";

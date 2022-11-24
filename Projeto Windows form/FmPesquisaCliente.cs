@@ -40,6 +40,7 @@ namespace Projeto_Windows_form
 
         private void btnSair_Click(object sender, EventArgs e)
         {
+            codigo = 0;
             Close();
         }
 
@@ -47,6 +48,19 @@ namespace Projeto_Windows_form
         {
             codigo = int.Parse(tbClienteDataGridView.CurrentRow.Cells[0].Value.ToString());
             Close();
+        }
+
+        private void txtPesquisa_TextChanged(object sender, EventArgs e)
+        {
+            if (txtPesquisa.Text == "")
+            {
+                this.tbClienteTableAdapter.Fill(this.cadastroDataSet.tbCliente);
+            }
+            else
+            {
+                this.tbClienteTableAdapter.FillByNome(this.cadastroDataSet.tbCliente, "%" + txtPesquisa.Text + "%");
+            }
+
         }
     }
 }

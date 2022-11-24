@@ -45,5 +45,11 @@ namespace Projeto_Windows_form
             FmFornecedor ff = new FmFornecedor();
             ff.ShowDialog();
         }
+
+        private void usuáriosToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            FmRelatorioUsuario fru = new FmRelatorioUsuario();
+            fru.ShowDialog();
+        }
     }
 }
