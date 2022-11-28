@@ -165,9 +165,9 @@ namespace Projeto_Windows_form
 
         private void btnSalvar_Click(object sender, EventArgs e)
         {
-            if (cd_rgTextBox.Text == "")
+            if (cd_rgTextBox.Text == "" && nm_clienteTextBox.Text == "" && nr_telefoneTextBox.Text == "")
             {
-                MessageBox.Show("Insira seu RG !!!");
+                MessageBox.Show("Preencha todos os campos !!!");
                 cd_rgTextBox.Focus();
             }
 

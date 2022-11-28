@@ -169,7 +169,8 @@ namespace Projeto_Windows_form
 
         private void btnSalvar_Click(object sender, EventArgs e)
         {
-            if(cd_ieTextBox.Text == "")
+            if(cd_ieTextBox.Text == "" && nm_fornecedorTextBox.Text == ""
+                && nr_telefoneTextBox.Text == "")
             {
                 MessageBox.Show("Preencha o campo id_ie");
                 cd_ieTextBox.Focus();

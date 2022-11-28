@@ -95,10 +95,19 @@ namespace Projeto_Windows_form
 
         private void btnSalvar_Click(object sender, EventArgs e)
         {
-            Validate();
-            tbProdutoBindingSource.EndEdit();
-            tbProdutoTableAdapter.Update(cadastroDataSet.tbProduto);
-            Desabilita();
+            if (nm_produtoTextBox.Text == "" && sg_unidadeTextBox.Text == ""
+                && vl_custoTextBox.Text == "" && cd_fornecedorTextBox.Text == "")
+            {
+                MessageBox.Show("Preencha todos os campos !!!");
+                nm_produtoTextBox.Focus();
+            }
+            else
+            {
+                Validate();
+                tbProdutoBindingSource.EndEdit();
+                tbProdutoTableAdapter.Update(cadastroDataSet.tbProduto);
+                Desabilita()
+            }
         }
 
         private void btnCancelar_Click(object sender, EventArgs e)

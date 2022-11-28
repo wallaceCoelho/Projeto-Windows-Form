@@ -95,10 +95,19 @@ namespace Projeto_Windows_form
 
         private void btnSalvar_Click(object sender, EventArgs e)
         {
-            Validate();
-            tbUsuarioBindingSource.EndEdit();
-            tbUsuarioTableAdapter.Update(cadastroDataSet.tbUsuario);
-            Desabilita();
+            if (nm_loginTextBox.Text == "" && nm_usuarioTextBox.Text == "" 
+                && sg_nivelTextBox.Text == "" && cd_senhaTextBox.Text == "")
+            {
+                MessageBox.Show("Preencha todos os compos !!!");
+                nm_loginTextBox.Focus();
+            }
+            else
+            {
+                Validate();
+                tbUsuarioBindingSource.EndEdit();
+                tbUsuarioTableAdapter.Update(cadastroDataSet.tbUsuario);
+                Desabilita()
+            }
         }
 
         private void btnCancelar_Click(object sender, EventArgs e)
