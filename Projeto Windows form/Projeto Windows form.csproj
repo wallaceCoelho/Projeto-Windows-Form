@@ -124,6 +124,24 @@
     <Compile Include="FmPrincipal.Designer.cs">
       <DependentUpon>FmPrincipal.cs</DependentUpon>
     </Compile>
+    <Compile Include="FmRelatorioCliente.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FmRelatorioCliente.Designer.cs">
+      <DependentUpon>FmRelatorioCliente.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FmRelatorioFornecedor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FmRelatorioFornecedor.Designer.cs">
+      <DependentUpon>FmRelatorioFornecedor.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FmRelatorioProduto.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FmRelatorioProduto.Designer.cs">
+      <DependentUpon>FmRelatorioProduto.cs</DependentUpon>
+    </Compile>
     <Compile Include="FmRelatorioUsuario.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -172,6 +190,15 @@
     <EmbeddedResource Include="FmProduto.resx">
       <DependentUpon>FmProduto.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FmRelatorioCliente.resx">
+      <DependentUpon>FmRelatorioCliente.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FmRelatorioFornecedor.resx">
+      <DependentUpon>FmRelatorioFornecedor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FmRelatorioProduto.resx">
+      <DependentUpon>FmRelatorioProduto.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FmRelatorioUsuario.resx">
       <DependentUpon>FmRelatorioUsuario.cs</DependentUpon>
     </EmbeddedResource>
@@ -191,6 +218,9 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="RelatorioCliente.rdlc" />
+    <EmbeddedResource Include="RelatorioFornecedor.rdlc" />
+    <EmbeddedResource Include="RelatorioProduto.rdlc" />
     <EmbeddedResource Include="RelatorioUsuario.rdlc" />
     <None Include="CadastroDataSet.xsc">
       <DependentUpon>CadastroDataSet.xsd</DependentUpon>

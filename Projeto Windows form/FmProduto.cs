@@ -126,5 +126,29 @@ namespace Projeto_Windows_form
                 tbProdutoBindingSource.Position = reg;
             }
         }
+
+        private void btnImprimir_Click(object sender, EventArgs e)
+        {
+            printPreviewDialog1.ShowDialog();
+        }
+
+        private void printDocument1_PrintPage(object sender, System.Drawing.Printing.PrintPageEventArgs e)
+        {
+            string strDados;
+            Graphics objImpressao = e.Graphics;
+
+            strDados = "FICHA DE PRODUTOS" + (char)10 + (char)10;
+            objImpressao.DrawString(strDados, new Font("Arial", 20, FontStyle.Bold), Brushes.Red, 300, 50);
+
+            strDados = "Código: " + cd_produtoTextBox.Text + (char)10;
+            strDados += "Descrição: " + nm_produtoTextBox.Text + (char)10;
+            strDados += "Unidade: " + sg_unidadeTextBox.Text + (char)10;
+            strDados += "Quantidade em estoque: " + qt_estoqueTextBox.Text + (char)10;
+            strDados += "Preço de custo: " + vl_custoTextBox.Text + (char)10;
+            strDados += "Preço de venda: " + vl_vendaTextBox.Text;
+
+            objImpressao.DrawString(strDados, new Font("Arial", 12, FontStyle.Bold), Brushes.Black, 50, 120);
+            objImpressao.DrawLine(new Pen(Brushes.Black), 50, 80, 800, 80);
+        }
     }
 }

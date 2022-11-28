@@ -51,5 +51,23 @@ namespace Projeto_Windows_form
             FmRelatorioUsuario fru = new FmRelatorioUsuario();
             fru.ShowDialog();
         }
+
+        private void clientesToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            FmRelatorioCliente frc = new FmRelatorioCliente();
+            frc.ShowDialog();
+        }
+
+        private void fornecedoresToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            FmRelatorioFornecedor frf = new FmRelatorioFornecedor();
+            frf.ShowDialog();
+        }
+
+        private void produtosToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            FmRelatorioProduto frp = new FmRelatorioProduto();
+            frp.ShowDialog();
+        }
     }
 }

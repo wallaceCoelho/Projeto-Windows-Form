@@ -30,16 +30,31 @@
         {
             this.components = new System.ComponentModel.Container();
             Microsoft.Reporting.WinForms.ReportDataSource reportDataSource1 = new Microsoft.Reporting.WinForms.ReportDataSource();
-            this.reportViewer1 = new Microsoft.Reporting.WinForms.ReportViewer();
-            this.cadastroDataSet = new Projeto_Windows_form.CadastroDataSet();
-            this.cadastroDataSetBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.tbUsuarioBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.cadastroDataSetBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.cadastroDataSet = new Projeto_Windows_form.CadastroDataSet();
+            this.reportViewer1 = new Microsoft.Reporting.WinForms.ReportViewer();
             this.tbUsuarioTableAdapter = new Projeto_Windows_form.CadastroDataSetTableAdapters.tbUsuarioTableAdapter();
             this.btnSair = new System.Windows.Forms.Button();
-            ((System.ComponentModel.ISupportInitialize)(this.cadastroDataSet)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.cadastroDataSetBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tbUsuarioBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cadastroDataSetBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cadastroDataSet)).BeginInit();
             this.SuspendLayout();
+            // 
+            // tbUsuarioBindingSource
+            // 
+            this.tbUsuarioBindingSource.DataMember = "tbUsuario";
+            this.tbUsuarioBindingSource.DataSource = this.cadastroDataSetBindingSource;
+            // 
+            // cadastroDataSetBindingSource
+            // 
+            this.cadastroDataSetBindingSource.DataSource = this.cadastroDataSet;
+            this.cadastroDataSetBindingSource.Position = 0;
+            // 
+            // cadastroDataSet
+            // 
+            this.cadastroDataSet.DataSetName = "CadastroDataSet";
+            this.cadastroDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // reportViewer1
             // 
@@ -52,21 +67,6 @@
             this.reportViewer1.ServerReport.BearerToken = null;
             this.reportViewer1.Size = new System.Drawing.Size(727, 351);
             this.reportViewer1.TabIndex = 0;
-            // 
-            // cadastroDataSet
-            // 
-            this.cadastroDataSet.DataSetName = "CadastroDataSet";
-            this.cadastroDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // cadastroDataSetBindingSource
-            // 
-            this.cadastroDataSetBindingSource.DataSource = this.cadastroDataSet;
-            this.cadastroDataSetBindingSource.Position = 0;
-            // 
-            // tbUsuarioBindingSource
-            // 
-            this.tbUsuarioBindingSource.DataMember = "tbUsuario";
-            this.tbUsuarioBindingSource.DataSource = this.cadastroDataSetBindingSource;
             // 
             // tbUsuarioTableAdapter
             // 
@@ -95,9 +95,9 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "FmRelatorioUsuario";
             this.Load += new System.EventHandler(this.FmRelatorioUsuario_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.cadastroDataSet)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.cadastroDataSetBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.tbUsuarioBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cadastroDataSetBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cadastroDataSet)).EndInit();
             this.ResumeLayout(false);
 
         }

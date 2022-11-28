@@ -165,7 +165,13 @@ namespace Projeto_Windows_form
 
         private void btnSalvar_Click(object sender, EventArgs e)
         {
-            if (ValidaCpf(cd_cpfMaskedTextBox.Text))
+            if (cd_rgTextBox.Text == "")
+            {
+                MessageBox.Show("Insira seu RG !!!");
+                cd_rgTextBox.Focus();
+            }
+
+            else if (ValidaCpf(cd_cpfMaskedTextBox.Text))
             {
                 Validate();
                 tbClienteBindingSource.EndEdit();
@@ -204,6 +210,30 @@ namespace Projeto_Windows_form
                 reg = tbClienteBindingSource.Find("cd_cliente", codigo);
                 tbClienteBindingSource.Position = reg;
             }
+        }
+
+        private void btnImprimir_Click(object sender, EventArgs e)
+        {
+            printPreviewDialog1.ShowDialog();
+        }
+
+        private void printDocument1_PrintPage(object sender, System.Drawing.Printing.PrintPageEventArgs e)
+        {
+            string strDados;
+            Graphics objImpressao = e.Graphics;
+
+            strDados = "FICHA DE CLIENTES" + (char)10 + (char)10;
+            objImpressao.DrawString(strDados, new Font("Arial", 20, FontStyle.Bold), Brushes.Red, 300, 50);
+
+            strDados = "Código: " + cd_clienteTextBox.Text + (char)10;
+            strDados += "Nome: " + nm_clienteTextBox.Text + (char)10;
+            strDados += "Endereço: " + ds_enderecoTextBox.Text + (char)10;
+            strDados += "Número casa: " + nr_casaTextBox.Text + (char)10;
+            strDados += "Telefone: " + nr_telefoneTextBox.Text + (char)10;
+            strDados += "CPF: " + cd_cpfMaskedTextBox.Text;
+
+            objImpressao.DrawString(strDados, new Font("Arial", 12, FontStyle.Bold), Brushes.Black, 50, 120);
+            objImpressao.DrawLine(new Pen(Brushes.Black), 50, 80, 800, 80);
         }
     }
 }

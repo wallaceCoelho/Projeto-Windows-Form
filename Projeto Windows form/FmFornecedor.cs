@@ -17,15 +17,18 @@ namespace Projeto_Windows_form
             bool resp = false;
             int digito01 = 0, digito02 = 0;
 
-            digito01 += int.Parse(cnpj.Substring(10, 1)) * 2;
-            digito01 += int.Parse(cnpj.Substring(9, 1)) * 3;
-            digito01 += int.Parse(cnpj.Substring(8, 1)) * 4;
-            digito01 += int.Parse(cnpj.Substring(6, 1)) * 5;
-            digito01 += int.Parse(cnpj.Substring(5, 1)) * 6;
-            digito01 += int.Parse(cnpj.Substring(4, 1)) * 7;
-            digito01 += int.Parse(cnpj.Substring(2, 1)) * 8;
-            digito01 += int.Parse(cnpj.Substring(1, 1)) * 9;
-            digito01 += int.Parse(cnpj.Substring(0, 1)) * 10;
+            digito01 += int.Parse(cnpj.Substring(14, 1)) * 2;
+            digito01 += int.Parse(cnpj.Substring(13, 1)) * 3;
+            digito01 += int.Parse(cnpj.Substring(12, 1)) * 4;
+            digito01 += int.Parse(cnpj.Substring(11, 1)) * 5;
+            digito01 += int.Parse(cnpj.Substring(9, 1)) * 6;
+            digito01 += int.Parse(cnpj.Substring(8, 1)) * 7;
+            digito01 += int.Parse(cnpj.Substring(7, 1)) * 8;
+            digito01 += int.Parse(cnpj.Substring(5, 1)) * 9;
+            digito01 += int.Parse(cnpj.Substring(4, 1)) * 2;
+            digito01 += int.Parse(cnpj.Substring(3, 1)) * 3;
+            digito01 += int.Parse(cnpj.Substring(1, 1)) * 4;
+            digito01 += int.Parse(cnpj.Substring(0, 1)) * 5;
 
             digito01 %= 11;
 
@@ -38,17 +41,21 @@ namespace Projeto_Windows_form
                 digito01 = 11 - digito01;
             }
 
-            digito02 += int.Parse(cnpj.Substring(12, 1)) * 2;
-            digito02 += int.Parse(cnpj.Substring(10, 1)) * 3;
-            digito02 += int.Parse(cnpj.Substring(9, 1)) * 4;
-            digito02 += int.Parse(cnpj.Substring(8, 1)) * 5;
-            digito02 += int.Parse(cnpj.Substring(6, 1)) * 6;
-            digito02 += int.Parse(cnpj.Substring(5, 1)) * 7;
-            digito02 += int.Parse(cnpj.Substring(4, 1)) * 8;
-            digito02 += int.Parse(cnpj.Substring(2, 1)) * 9;
-            digito02 += int.Parse(cnpj.Substring(1, 1)) * 10;
-            digito02 += int.Parse(cnpj.Substring(0, 1)) * 11;
+            digito02 += int.Parse(cnpj.Substring(16, 1)) * 2;
+            digito02 += int.Parse(cnpj.Substring(14, 1)) * 3;
+            digito02 += int.Parse(cnpj.Substring(13, 1)) * 4;
+            digito02 += int.Parse(cnpj.Substring(12, 1)) * 5;
+            digito02 += int.Parse(cnpj.Substring(11, 1)) * 6;
+            digito02 += int.Parse(cnpj.Substring(9, 1)) * 7;
+            digito02 += int.Parse(cnpj.Substring(8, 1)) * 8;
+            digito02 += int.Parse(cnpj.Substring(7, 1)) * 9;
+            digito02 += int.Parse(cnpj.Substring(5, 1)) * 2;
+            digito02 += int.Parse(cnpj.Substring(4, 1)) * 3;
+            digito02 += int.Parse(cnpj.Substring(3, 1)) * 4;
+            digito02 += int.Parse(cnpj.Substring(1, 1)) * 5;
+            digito02 += int.Parse(cnpj.Substring(0, 1)) * 6;
 
+            digito02 %= 11;
 
             if (digito02 < 2)
             {
@@ -59,8 +66,8 @@ namespace Projeto_Windows_form
                 digito02 = 11 - digito02;
             }
 
-            if (cnpj.Substring(12, 1) == digito01.ToString()
-                && cnpj.Substring(13, 1) == digito02.ToString())
+            if (cnpj.Substring(16, 1) == digito01.ToString()
+                && cnpj.Substring(17, 1) == digito02.ToString())
             {
                 resp = true;
             }
@@ -162,12 +169,18 @@ namespace Projeto_Windows_form
 
         private void btnSalvar_Click(object sender, EventArgs e)
         {
-            if (ValidaCnpj(cd_cnpjMaskedTextBox.Text))
+            if(cd_ieTextBox.Text == "")
             {
-            Validate();
-            tbFornecedorBindingSource.EndEdit();
-            tbFornecedorTableAdapter.Update(cadastroDataSet.tbFornecedor);
-            Desabilita();
+                MessageBox.Show("Preencha o campo id_ie");
+                cd_ieTextBox.Focus();
+            }
+
+            else if (ValidaCnpj(cd_cnpjMaskedTextBox.Text))
+            {
+                Validate();
+                tbFornecedorBindingSource.EndEdit();
+                tbFornecedorTableAdapter.Update(cadastroDataSet.tbFornecedor);
+                Desabilita();
             }
             else
             {
@@ -200,6 +213,30 @@ namespace Projeto_Windows_form
                 reg = tbFornecedorBindingSource.Find("cd_fornecedor", codigo);
                 tbFornecedorBindingSource.Position = reg;
             }
+        }
+
+        private void btnImprimir_Click(object sender, EventArgs e)
+        {
+            printPreviewDialog1.ShowDialog();
+        }
+
+        private void printDocument1_PrintPage(object sender, System.Drawing.Printing.PrintPageEventArgs e)
+        {
+            string strDados;
+            Graphics objImpressao = e.Graphics;
+
+            strDados = "FICHA DE FORNECEDOR" + (char)10 + (char)10;
+            objImpressao.DrawString(strDados, new Font("Arial", 20, FontStyle.Bold), Brushes.Red, 300, 50);
+
+            strDados = "Código: " + cd_fornecedorTextBox.Text + (char)10;
+            strDados += "Nome: " + nm_fornecedorTextBox.Text + (char)10;
+            strDados += "Endereço: " + ds_enderecoTextBox.Text + (char)10;
+            strDados += "Número casa: " + nr_numeroTextBox.Text + (char)10;
+            strDados += "Telefone: " + nr_telefoneTextBox.Text + (char)10;
+            strDados += "CNPJ: " + cd_cnpjMaskedTextBox.Text;
+
+            objImpressao.DrawString(strDados, new Font("Arial", 12, FontStyle.Bold), Brushes.Black, 50, 120);
+            objImpressao.DrawLine(new Pen(Brushes.Black), 50, 80, 800, 80);
         }
     }
 }
