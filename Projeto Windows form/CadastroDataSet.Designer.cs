@@ -4643,7 +4643,7 @@ SELECT cd_usuario, nm_usuario, sg_nivel, nm_login, cd_senha FROM tbUsuario WHERE
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         private void InitCommandCollection() {
-            this._commandCollection = new global::System.Data.SqlClient.SqlCommand[2];
+            this._commandCollection = new global::System.Data.SqlClient.SqlCommand[3];
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
             this._commandCollection[0].CommandText = "SELECT cd_usuario, nm_usuario, sg_nivel, nm_login, cd_senha FROM dbo.tbUsuario";
@@ -4651,9 +4651,16 @@ SELECT cd_usuario, nm_usuario, sg_nivel, nm_login, cd_senha FROM tbUsuario WHERE
             this._commandCollection[1] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[1].Connection = this.Connection;
             this._commandCollection[1].CommandText = "SELECT        cd_usuario, nm_usuario, sg_nivel, nm_login, cd_senha\r\nFROM         " +
-                "   tbUsuario\r\nWHERE        (nm_usuario LIKE @nome)";
+                "   tbUsuario\r\nWHERE        (nm_login = @login) AND (cd_senha = @senha)";
             this._commandCollection[1].CommandType = global::System.Data.CommandType.Text;
-            this._commandCollection[1].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@nome", global::System.Data.SqlDbType.VarChar, 100, global::System.Data.ParameterDirection.Input, 0, 0, "nm_usuario", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[1].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@login", global::System.Data.SqlDbType.VarChar, 15, global::System.Data.ParameterDirection.Input, 0, 0, "nm_login", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[1].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@senha", global::System.Data.SqlDbType.VarChar, 15, global::System.Data.ParameterDirection.Input, 0, 0, "cd_senha", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[2] = new global::System.Data.SqlClient.SqlCommand();
+            this._commandCollection[2].Connection = this.Connection;
+            this._commandCollection[2].CommandText = "SELECT        cd_usuario, nm_usuario, sg_nivel, nm_login, cd_senha\r\nFROM         " +
+                "   tbUsuario\r\nWHERE        (nm_usuario LIKE @nome)";
+            this._commandCollection[2].CommandType = global::System.Data.CommandType.Text;
+            this._commandCollection[2].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@nome", global::System.Data.SqlDbType.VarChar, 100, global::System.Data.ParameterDirection.Input, 0, 0, "nm_usuario", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -4684,8 +4691,56 @@ SELECT cd_usuario, nm_usuario, sg_nivel, nm_login, cd_senha FROM tbUsuario WHERE
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, false)]
-        public virtual int FillByNome(CadastroDataSet.tbUsuarioDataTable dataTable, string nome) {
+        public virtual int FillByLogin(CadastroDataSet.tbUsuarioDataTable dataTable, string login, string senha) {
             this.Adapter.SelectCommand = this.CommandCollection[1];
+            if ((login == null)) {
+                throw new global::System.ArgumentNullException("login");
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[0].Value = ((string)(login));
+            }
+            if ((senha == null)) {
+                throw new global::System.ArgumentNullException("senha");
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[1].Value = ((string)(senha));
+            }
+            if ((this.ClearBeforeFill == true)) {
+                dataTable.Clear();
+            }
+            int returnValue = this.Adapter.Fill(dataTable);
+            return returnValue;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, false)]
+        public virtual CadastroDataSet.tbUsuarioDataTable GetDataLogin(string login, string senha) {
+            this.Adapter.SelectCommand = this.CommandCollection[1];
+            if ((login == null)) {
+                throw new global::System.ArgumentNullException("login");
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[0].Value = ((string)(login));
+            }
+            if ((senha == null)) {
+                throw new global::System.ArgumentNullException("senha");
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[1].Value = ((string)(senha));
+            }
+            CadastroDataSet.tbUsuarioDataTable dataTable = new CadastroDataSet.tbUsuarioDataTable();
+            this.Adapter.Fill(dataTable);
+            return dataTable;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, false)]
+        public virtual int FillByNome(CadastroDataSet.tbUsuarioDataTable dataTable, string nome) {
+            this.Adapter.SelectCommand = this.CommandCollection[2];
             if ((nome == null)) {
                 throw new global::System.ArgumentNullException("nome");
             }
@@ -4704,7 +4759,7 @@ SELECT cd_usuario, nm_usuario, sg_nivel, nm_login, cd_senha FROM tbUsuario WHERE
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, false)]
         public virtual CadastroDataSet.tbUsuarioDataTable GetDataByNome(string nome) {
-            this.Adapter.SelectCommand = this.CommandCollection[1];
+            this.Adapter.SelectCommand = this.CommandCollection[2];
             if ((nome == null)) {
                 throw new global::System.ArgumentNullException("nome");
             }

@@ -110,28 +110,28 @@
             // usuáriosToolStripMenuItem1
             // 
             this.usuáriosToolStripMenuItem1.Name = "usuáriosToolStripMenuItem1";
-            this.usuáriosToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
+            this.usuáriosToolStripMenuItem1.Size = new System.Drawing.Size(145, 22);
             this.usuáriosToolStripMenuItem1.Text = "Usuários";
             this.usuáriosToolStripMenuItem1.Click += new System.EventHandler(this.usuáriosToolStripMenuItem1_Click);
             // 
             // clientesToolStripMenuItem1
             // 
             this.clientesToolStripMenuItem1.Name = "clientesToolStripMenuItem1";
-            this.clientesToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
+            this.clientesToolStripMenuItem1.Size = new System.Drawing.Size(145, 22);
             this.clientesToolStripMenuItem1.Text = "Clientes";
             this.clientesToolStripMenuItem1.Click += new System.EventHandler(this.clientesToolStripMenuItem1_Click);
             // 
             // fornecedoresToolStripMenuItem1
             // 
             this.fornecedoresToolStripMenuItem1.Name = "fornecedoresToolStripMenuItem1";
-            this.fornecedoresToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
+            this.fornecedoresToolStripMenuItem1.Size = new System.Drawing.Size(145, 22);
             this.fornecedoresToolStripMenuItem1.Text = "Fornecedores";
             this.fornecedoresToolStripMenuItem1.Click += new System.EventHandler(this.fornecedoresToolStripMenuItem1_Click);
             // 
             // produtosToolStripMenuItem1
             // 
             this.produtosToolStripMenuItem1.Name = "produtosToolStripMenuItem1";
-            this.produtosToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
+            this.produtosToolStripMenuItem1.Size = new System.Drawing.Size(145, 22);
             this.produtosToolStripMenuItem1.Text = "Produtos";
             this.produtosToolStripMenuItem1.Click += new System.EventHandler(this.produtosToolStripMenuItem1_Click);
             // 
@@ -158,6 +158,7 @@
             this.Name = "FmPrincipal";
             this.Text = "Home";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
+            this.Load += new System.EventHandler(this.FmPrincipal_Load);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.ResumeLayout(false);

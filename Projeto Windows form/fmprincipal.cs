@@ -5,7 +5,7 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
+using System.Threading;
 using System.Windows.Forms;
 
 namespace Projeto_Windows_form
@@ -15,6 +15,10 @@ namespace Projeto_Windows_form
         public FmPrincipal()
         {
             InitializeComponent();
+            FmSplashScreen frmSplashScreen = new FmSplashScreen();
+            frmSplashScreen.Show();
+            Thread.Sleep(3000);
+            frmSplashScreen.Close();   
         }
 
         private void usuáriosToolStripMenuItem_Click(object sender, EventArgs e)
@@ -25,7 +29,7 @@ namespace Projeto_Windows_form
 
         private void sairToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Application.Exit();
+            Close();
         }
 
         private void clientesToolStripMenuItem_Click(object sender, EventArgs e)
@@ -48,8 +52,15 @@ namespace Projeto_Windows_form
 
         private void usuáriosToolStripMenuItem1_Click(object sender, EventArgs e)
         {
-            FmRelatorioUsuario fru = new FmRelatorioUsuario();
-            fru.ShowDialog();
+            if (FmLogin.nivel == "A")
+            {
+                FmRelatorioUsuario fru = new FmRelatorioUsuario();
+                fru.ShowDialog();
+            }
+            else
+            {
+                MessageBox.Show("Você não tem autorização para acessar esta página!");
+            }
         }
 
         private void clientesToolStripMenuItem1_Click(object sender, EventArgs e)
@@ -68,6 +79,11 @@ namespace Projeto_Windows_form
         {
             FmRelatorioProduto frp = new FmRelatorioProduto();
             frp.ShowDialog();
+        }
+
+        private void FmPrincipal_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

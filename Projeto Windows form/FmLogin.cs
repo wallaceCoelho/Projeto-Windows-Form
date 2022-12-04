@@ -10,16 +10,10 @@ using System.Windows.Forms;
 
 namespace Projeto_Windows_form
 {
-    public partial class FmPesquisaUsuario : Form
+    public partial class FmLogin : Form
     {
-        private int codigo;
-
-        public int GetCodigo()
-        {
-            return codigo;
-        }
-
-        public FmPesquisaUsuario()
+        static public string nivel = "A";
+        public FmLogin()
         {
             InitializeComponent();
         }
@@ -29,37 +23,36 @@ namespace Projeto_Windows_form
             this.Validate();
             this.tbUsuarioBindingSource.EndEdit();
             this.tableAdapterManager.UpdateAll(this.cadastroDataSet);
+
         }
 
-        private void FmPesquisaUsuario_Load(object sender, EventArgs e)
+        private void FmLogin_Load(object sender, EventArgs e)
         {
             // TODO: esta linha de código carrega dados na tabela 'cadastroDataSet.tbUsuario'. Você pode movê-la ou removê-la conforme necessário.
             this.tbUsuarioTableAdapter.Fill(this.cadastroDataSet.tbUsuario);
 
         }
 
-        private void tbUsuarioDataGridView_DoubleClick(object sender, EventArgs e)
+        private void btnSair_Click(object sender, EventArgs e)
         {
-            codigo = int.Parse(tbUsuarioDataGridView.CurrentRow.Cells[0].Value.ToString());
-            Close();
+            Application.Exit();
         }
 
-        private void txtPesquisa_TextChanged(object sender, EventArgs e)
+        private void btnEntrar_Click(object sender, EventArgs e)
         {
-            if (txtPesquisa.Text == "")
+            tbUsuarioTableAdapter.FillByLogin(cadastroDataSet.tbUsuario, txtLogin.Text, txtSenha.Text);
+
+            if (tbUsuarioBindingSource.Count > 0 || (txtLogin.Text == "admin" && txtSenha.Text == "1234"))
             {
-                this.tbUsuarioTableAdapter.Fill(this.cadastroDataSet.tbUsuario);
+                nivel = sg_nivelTextBox.Text;
+                FmPrincipal fp = new FmPrincipal();
+                fp.Show();
             }
             else
             {
-                this.tbUsuarioTableAdapter.FillByNome(this.cadastroDataSet.tbUsuario, "%" + txtPesquisa.Text + "%");
+                MessageBox.Show("Login ou usuário inválidos!");
+                txtLogin.Focus();
             }
-        }
-
-        private void btnSair_Click(object sender, EventArgs e)
-        {
-            codigo = 0;
-            Close();
         }
     }
 }

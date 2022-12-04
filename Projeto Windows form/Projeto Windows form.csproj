@@ -94,6 +94,12 @@
     <Compile Include="FmCliente.Designer.cs">
       <DependentUpon>FmCliente.cs</DependentUpon>
     </Compile>
+    <Compile Include="FmLogin.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FmLogin.Designer.cs">
+      <DependentUpon>FmLogin.cs</DependentUpon>
+    </Compile>
     <Compile Include="FmPesquisaCliente.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -148,6 +154,12 @@
     <Compile Include="FmRelatorioUsuario.Designer.cs">
       <DependentUpon>FmRelatorioUsuario.cs</DependentUpon>
     </Compile>
+    <Compile Include="FmSplashScreen.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FmSplashScreen.Designer.cs">
+      <DependentUpon>FmSplashScreen.cs</DependentUpon>
+    </Compile>
     <Compile Include="FmUsuario.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -171,6 +183,9 @@
     <Compile Include="SqlServerTypes\Loader.cs" />
     <EmbeddedResource Include="FmCliente.resx">
       <DependentUpon>FmCliente.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FmLogin.resx">
+      <DependentUpon>FmLogin.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FmPesquisaCliente.resx">
       <DependentUpon>FmPesquisaCliente.cs</DependentUpon>
@@ -201,6 +216,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FmRelatorioUsuario.resx">
       <DependentUpon>FmRelatorioUsuario.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FmSplashScreen.resx">
+      <DependentUpon>FmSplashScreen.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FmUsuario.resx">
       <DependentUpon>FmUsuario.cs</DependentUpon>

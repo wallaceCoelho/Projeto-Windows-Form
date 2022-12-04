@@ -106,7 +106,7 @@ namespace Projeto_Windows_form
                 Validate();
                 tbProdutoBindingSource.EndEdit();
                 tbProdutoTableAdapter.Update(cadastroDataSet.tbProduto);
-                Desabilita()
+                Desabilita();
             }
         }
 

@@ -106,7 +106,7 @@ namespace Projeto_Windows_form
                 Validate();
                 tbUsuarioBindingSource.EndEdit();
                 tbUsuarioTableAdapter.Update(cadastroDataSet.tbUsuario);
-                Desabilita()
+                Desabilita();
             }
         }
 

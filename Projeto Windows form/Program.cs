@@ -16,7 +16,7 @@ namespace Projeto_Windows_form
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new FmPrincipal());
+            Application.Run(new FmLogin());
         }
     }
 }
